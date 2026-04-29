@@ -1,0 +1,13 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>NH3 GC Reaction Order Calculator</title><link rel="stylesheet" href="style.css"/></head><body>
+<header><h1>NH₃ GC Reaction Order Calculator</h1><p>GC area 보정곡선 → 전환율 → reaction order</p></header>
+<main>
+<section class="card"><h2>1. 기본 조건</h2><div class="grid">
+<label>Total inlet flow, sccm <input id="ftot" type="number" value="100" step="0.001"></label>
+<label>Catalyst weight, g <input id="wcat" type="number" value="0.1" step="0.0001"></label>
+<label>Pressure, atm <input id="pressure" type="number" value="1" step="0.001"></label>
+<label>Calibration <select id="calType"><option value="linear">y = m·Area + b</option><option value="throughZero">y = m·Area</option></select></label>
+</div><p class="note">y는 mole fraction 또는 P/Ptot입니다.</p></section>
+<section class="card"><h2>2. Calibration 입력</h2><div class="tabs"><button class="tab active" data-gas="H2">H₂</button><button class="tab" data-gas="N2">N₂</button><button class="tab" data-gas="NH3">NH₃</button></div><div id="calTableWrap"></div><div class="buttons"><button id="addCalRow">row 추가</button><button id="fitCal">Calibration 계산</button></div><div id="calResults" class="results"></div></section>
+<section class="card"><h2>3. 실험 데이터 입력</h2><div class="wide"><table id="expTable"><thead><tr><th>Run</th><th>Test gas</th><th>H₂ in</th><th>N₂ in</th><th>NH₃ in</th><th>Ar in</th><th>Area H₂</th><th>Area N₂</th><th>Area NH₃</th><th>삭제</th></tr></thead><tbody></tbody></table></div><div class="buttons"><button id="addExpRow">row 추가</button><button id="calcExp">전환율/Order 계산</button><button id="downloadCsv">CSV 다운로드</button><button id="saveLocal">저장</button><button id="loadLocal">불러오기</button></div></section>
+<section class="card"><h2>4. 결과</h2><div id="expResults" class="wide"></div><div id="orderResults" class="results"></div></section>
+</main><footer>NH₃ → 0.5 N₂ + 1.5 H₂</footer><script src="app.js"></script></body></html>
